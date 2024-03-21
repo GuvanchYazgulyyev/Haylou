@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="Haylou.MainPage"
+             Shell.NavBarIsVisible="False">
+    <Grid RowDefinitions="*, Auto">
+        <Border Grid.Row="0"
+                Padding="20"
+                StrokeThickness="0"
+                StrokeShape="RoundRectangle 0, 0, 25, 25">
+            <Border.Background>
+                <LinearGradientBrush EndPoint="0,1">
+                    <GradientStop Color="#512BD4"
+                                  Offset="0.1"/>
+                    <GradientStop Color="#7755EC"
+                                  Offset="1.0"/>
+
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <VerticalStackLayout Spacing="20">
+                <Label Text="Gender" 
+                       TextColor="White"
+                       HorizontalOptions="Center"
+                       FontAttributes="Bold"/>
+                <Grid ColumnDefinitions="*,*"
+                      ColumnSpacing="15">
+                    <!--Male-->
+                    <Border Grid.Column="0"
+                            BackgroundColor="White"
+                            StrokeShape="RoundRectangle 25"
+                            Padding="20,10"
+                            StrokeThickness="0">
+                        <HorizontalStackLayout HorizontalOptions="Center"
+                                               Spacing="10">
+                            <Image Source="male"
+                                   HeightRequest="20"
+                                   WidthRequest="20">
+                                <Image.Behaviors>
+                                    <toolkit:IconTintColorBehavior TintColor="#7755EC"/>
+                                </Image.Behaviors>
+                            </Image>
+
+                            <Label Text="Male"
+                                   FontAttributes="Bold"
+                                   TextColor="#7755EC"/>
+                        </HorizontalStackLayout>
+                    </Border>
+
+                    <!--Female-->
+                    <Border Grid.Column="1"
+                             BackgroundColor="#9681E1"
+                             StrokeShape="RoundRectangle 25"
+                             Padding="20,10"
+                            StrokeThickness="0">
+                        <HorizontalStackLayout HorizontalOptions="Center"
+                             Spacing="10">
+                            <Image Source="female"
+                                   HeightRequest="20"
+                                   WidthRequest="20">
+                                <Image.Behaviors>
+                                    <toolkit:IconTintColorBehavior TintColor="White"/>
+                                </Image.Behaviors>
+                            </Image>
+
+                            <Label Text="Female"
+                 FontAttributes="Bold"
+                 TextColor="White"/>
+                        </HorizontalStackLayout>
+                    </Border>
+                </Grid>
+
+
+
+                <!--Height Progress Bar kısmı-->
+                <Label Text="HEIGHT" 
+                       TextColor="White"
+                       HorizontalOptions="Center"
+                       FontAttributes="Bold"
+                       Margin="0,20,0,0"/>
+
+                <Border Grid.Column="1"
+                        BackgroundColor="#9681E1"
+                        StrokeShape="RoundRectangle 25"
+                        Padding="20,10"
+                        StrokeThickness="0"
+                        HorizontalOptions="Center">
+                    <Label Text="{Binding Source={x:Reference heightSlider},Path=Value,
+                        StringFormat='{0:F0} cm'}" 
+                           TextColor="White"
+                           HorizontalOptions="Center"
+                           FontAttributes="Bold"/>
+                </Border>
+
+                <!--Progress Bar kısmı Yükseklik -->
+                <Slider x:Name="heightSlider"
+                        ThumbColor="White"
+                        MinimumTrackColor="White"
+                        MaximumTrackColor="White"
+                        Maximum="350"
+                        Minimum="10"
+                        Value="50"/>
+
+                <!--Height Progress Bar kısmı-->
+
+
+
+
+                <!--Width Progress Bar kısmı-->
+                <Label Text="WEIGHT" 
+                       TextColor="White"
+                       HorizontalOptions="Center"
+                       FontAttributes="Bold"
+                       Margin="0,20,0,0"/>
+
+                <Border Grid.Column="1"
+                        BackgroundColor="#9681E1"
+                        StrokeShape="RoundRectangle 25"
+                        Padding="20,10"
+                        StrokeThickness="0"
+                        HorizontalOptions="Center">
+                    <Label Text="{Binding Source={x:Reference weightSlider},Path=Value,
+                        StringFormat='{0:F0} kg'}" 
+                           TextColor="White"
+                           HorizontalOptions="Center"
+                           FontAttributes="Bold"/>
+                </Border>
+
+                <!--Progress Bar kısmı Yükseklik -->
+                <Slider x:Name="weightSlider"
+                        ThumbColor="White"
+                        MinimumTrackColor="White"
+                        MaximumTrackColor="White"
+                        Maximum="170"
+                        Minimum="10"
+                        Value="50"/>
+
+                <!--Width Progress Bar kısmı-->
+
+
+
+
+
+            </VerticalStackLayout>
+
+        </Border>
+        <VerticalStackLayout Grid.Row="1"
+                             Padding="25">
+            <Label Text="Salam" />
+        </VerticalStackLayout>
+    </Grid>
+
+</ContentPage>
