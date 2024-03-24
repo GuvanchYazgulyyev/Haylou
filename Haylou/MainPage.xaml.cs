@@ -9,8 +9,11 @@
             InitializeComponent();
         }
 
-        private void OnCounterClicked(object sender, EventArgs e)
+        private void CalculateData_Pressed(object sender, EventArgs e)
         {
+            var heightInMeter = heightSlider.Value * 100;
+            var weightInKg = weightSlider.Value;
+            var bmi = weightInKg / (heightInMeter * heightInMeter);
         }
     }
 

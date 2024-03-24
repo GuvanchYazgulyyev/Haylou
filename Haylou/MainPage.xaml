@@ -4,11 +4,11 @@
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="Haylou.MainPage"
              Shell.NavBarIsVisible="False">
-    <Grid RowDefinitions="*, Auto">
+    <Grid RowDefinitions="*, Auto, Auto">
         <Border Grid.Row="0"
                 Padding="20"
                 StrokeThickness="0"
-                StrokeShape="RoundRectangle 0, 0, 25, 25">
+                StrokeShape="RoundRectangle 0, 0, 0, 0">
             <Border.Background>
                 <LinearGradientBrush EndPoint="0,1">
                     <GradientStop Color="#512BD4"
@@ -36,7 +36,7 @@
                                                Spacing="10">
                             <Image Source="male"
                                    HeightRequest="20"
-                                   WidthRequest="20">
+                                   WidthRequest="{OnPlatform 20, iOS=25}">
                                 <Image.Behaviors>
                                     <toolkit:IconTintColorBehavior TintColor="#7755EC"/>
                                 </Image.Behaviors>
@@ -57,8 +57,8 @@
                         <HorizontalStackLayout HorizontalOptions="Center"
                              Spacing="10">
                             <Image Source="female"
-                                   HeightRequest="20"
-                                   WidthRequest="20">
+                                   HeightRequest="{OnPlatform 20}"
+                                    WidthRequest="{OnPlatform 20, iOS=40}">
                                 <Image.Behaviors>
                                     <toolkit:IconTintColorBehavior TintColor="White"/>
                                 </Image.Behaviors>
@@ -90,7 +90,8 @@
                         StringFormat='{0:F0} cm'}" 
                            TextColor="White"
                            HorizontalOptions="Center"
-                           FontAttributes="Bold"/>
+                           FontAttributes="Bold"
+                           Padding="{OnPlatform iOS=5}"/>
                 </Border>
 
                 <!--Progress Bar kısmı Yükseklik -->
@@ -124,7 +125,8 @@
                         StringFormat='{0:F0} kg'}" 
                            TextColor="White"
                            HorizontalOptions="Center"
-                           FontAttributes="Bold"/>
+                           FontAttributes="Bold"
+                           Padding="{OnPlatform iOS=5}"/>
                 </Border>
 
                 <!--Progress Bar kısmı Yükseklik -->
@@ -134,21 +136,108 @@
                         MaximumTrackColor="White"
                         Maximum="170"
                         Minimum="10"
-                        Value="50"/>
+                        Value="83"/>
 
                 <!--Width Progress Bar kısmı-->
-
-
-
-
-
             </VerticalStackLayout>
-
         </Border>
-        <VerticalStackLayout Grid.Row="1"
-                             Padding="25">
-            <Label Text="Salam" />
+
+        <!--Alttaki Beyaz kısmı kısmı-->
+        <Grid Grid.Row="1">
+            <Grid.Margin>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="Android" Value="0, -75,0,0"/>
+                    <On Platform="ios" Value="0, -60,0,0"/>
+                </OnPlatform>
+            </Grid.Margin>
+            <!--Alttaki yazı kısmı kısmı-->
+            <Border Grid.Row="1"
+                Padding="25"
+                StrokeShape="RoundRectangle 50, 50, 0, 0"
+                StrokeThickness="0"
+                BackgroundColor="White"
+                Margin="0,0,0,0"
+                >
+                <Border.Shadow>
+                    <Shadow Brush="#9681E1"
+                            Radius="100"
+                            Offset="-150,-150"/>
+                </Border.Shadow>
+            </Border>
+            <!--Alttaki yazı kısmı kısmı-->
+            <!--Right Arrow kısmı-->
+            <ImageButton Grid.Row="1"
+                         Source="right_arrow"
+                         HeightRequest="{OnPlatform 150, iOS=120}"
+                         WidthRequest="{OnPlatform 150, iOS=120}"
+                         CornerRadius="{OnPlatform 55, iOS=60}"
+                         BackgroundColor="White"
+                         Padding="20"
+                         VerticalOptions="End"
+                         HorizontalOptions="End"
+                         Pressed="CalculateData_Pressed"
+                         >
+                <ImageButton.Margin>
+                    <OnPlatform x:TypeArguments="Thickness">
+                        <On Platform="Android" Value="0, -75,0,0"/>
+                        <On Platform="ios" Value="0, -60,20,0"/>
+                    </OnPlatform>
+                </ImageButton.Margin>
+                <ImageButton.Shadow>
+                    <Shadow Brush="#512BD4"
+               Radius="{OnPlatform 55, iOS=60}"
+               Offset="5,5"/>
+                </ImageButton.Shadow>
+                <ImageButton.Behaviors>
+                    <toolkit:IconTintColorBehavior TintColor="#7755EC"/>
+                </ImageButton.Behaviors>
+            </ImageButton>
+
+            <!--Right Arrow kısmı-->
+        </Grid>
+        <!--Alttaki Beyaz kısmı kısmı-->
+
+
+
+
+        <!--Right Arrow kısmı-->
+        <!--
+        <ImageButton Grid.Row="1"
+            Source="right_arrow"
+            HeightRequest="150"
+            WidthRequest="150"
+            CornerRadius="55"
+            BackgroundColor="White"
+            Padding="20"
+            VerticalOptions="End"
+            HorizontalOptions="End"
+            Margin="0,-75,0,0"
+            >
+            <ImageButton.Shadow>
+                <Shadow Brush="#512BD4"
+                        Radius="55"
+                        Offset="5,5"/>
+            </ImageButton.Shadow>
+            <ImageButton.Behaviors>
+                <toolkit:IconTintColorBehavior TintColor="#7755EC"/>
+            </ImageButton.Behaviors>
+        </ImageButton>
+
+        -->
+        <!--Right Arrow kısmı-->
+
+        <VerticalStackLayout Grid.Row="2"
+                             Padding="25"
+                             Spacing="20">
+            <Label Text="Yazılımcı olarak benim için en önemli şeylerden biri, teknolojideki sürekli gelişim ve yenilikleri yakından takip etmek ve bu alanda kendimi sürekli olarak geliştirmektir." />
+            <Label Text=" * Teknolojideki sürekli gelişim ve yenilikleri yakından takip etmek ve bu alanda kendimi sürekli olarak geliştirmektir."
+                   FontSize="12"
+                   FontAttributes="Italic"
+                   />
         </VerticalStackLayout>
+
+
+
     </Grid>
 
 </ContentPage>
