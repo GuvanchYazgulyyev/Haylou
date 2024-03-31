@@ -14,6 +14,7 @@
             var heightInMeter = heightSlider.Value * 100;
             var weightInKg = weightSlider.Value;
             var bmi = weightInKg / (heightInMeter * heightInMeter);
+            Shell.Current.DisplayAlert("Haylou", $"Haylou is {bmi}", "Ok");
         }
     }
 

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="Haylou.Controls.RightArrowButtonControl">
+    <!--Buton olayı-->
+    <ContentView.ControlTemplate>
+        <ControlTemplate>
+            <ImageButton
+              Source="{TemplateBinding IconImgeSource}"
+              HeightRequest="{OnPlatform 150, iOS=120}"
+              WidthRequest="{OnPlatform 150, iOS=120}"
+              CornerRadius="{OnPlatform 55, iOS=60}"
+              BackgroundColor="White"
+              Padding="20"
+              VerticalOptions="End"
+              HorizontalOptions="End"
+              Pressed="Button_Pressed"
+              >
+                <ImageButton.Margin>
+                    <OnPlatform x:TypeArguments="Thickness">
+                        <On Platform="Android" Value="0, -75,0,0"/>
+                        <On Platform="ios" Value="0, -60,20,0"/>
+                    </OnPlatform>
+                </ImageButton.Margin>
+                <ImageButton.Shadow>
+                    <Shadow Brush="#512BD4"
+    Radius="{OnPlatform 55, iOS=60}"
+    Offset="5,5"/>
+                </ImageButton.Shadow>
+                <ImageButton.Behaviors>
+                    <toolkit:IconTintColorBehavior TintColor="#7755EC"/>
+                </ImageButton.Behaviors>
+            </ImageButton>
+        </ControlTemplate>
+    </ContentView.ControlTemplate>
+    <!--Buton Olayı-->
+</ContentView>
