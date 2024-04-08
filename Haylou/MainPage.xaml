@@ -159,7 +159,6 @@
         <!--Alttaki Beyaz kısmı kısmı-->
 
         <!--Right Arrow kısmı-->
-
         <VerticalStackLayout Grid.Row="2"
                              Padding="25"
                              Spacing="20"
@@ -184,9 +183,6 @@
             <Label Text="{Binding BmiStatus}" TextColor="{Binding StatusColor}"
                    FontSize="18"/>
         </VerticalStackLayout>
-
-
-
     </Grid>
 
 </ContentPage>
