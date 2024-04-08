@@ -3,8 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:controls="clr-namespace:Haylou.Controls"
+             xmlns:local="clr-namespace:Haylou"
              x:Class="Haylou.MainPage"
-             Shell.NavBarIsVisible="False">
+             Shell.NavBarIsVisible="False"
+             x:DataType="local:HaylouViewModel">
+
     <Grid RowDefinitions="*, Auto, Auto">
         <Border Grid.Row="0"
                 Padding="20"
@@ -21,7 +24,7 @@
             </Border.Background>
 
             <VerticalStackLayout Spacing="20">
-                <Label Text="Gender" 
+                <Label Text="Kilomuzu Kontrol Edelim" 
                        TextColor="White"
                        HorizontalOptions="Center"
                        FontAttributes="Bold"/>
@@ -30,20 +33,20 @@
                     <!--Male    Burası GenderControl e alındı-->
 
                     <controls:GenderControl Grid.Column="0" IconImgeSource="male" 
-                                            Text="Male" Color="#7755EC" BgColor="#ffffff"/>
+                                            Text="Erkek" Color="#7755EC" BgColor="#ffffff"/>
                     <!--Male-->
 
 
 
                     <!--Female Buralar Gender Controller den gelemktedir-->
                     <controls:GenderControl Grid.Column="1" IconImgeSource="female" 
-                                            Text="Female" Color="#ffffff" BgColor="#9681E1"/>
+                                            Text="Kadın" Color="#ffffff" BgColor="#9681E1"/>
                 </Grid>
 
 
 
                 <!--Height Progress Bar kısmı-->
-                <Label Text="HEIGHT" 
+                <Label Text="BOY" 
                        TextColor="White"
                        HorizontalOptions="Center"
                        FontAttributes="Bold"
@@ -70,7 +73,8 @@
                         MaximumTrackColor="White"
                         Maximum="350"
                         Minimum="10"
-                        Value="50"/>
+                        Value="50"
+                        IsEnabled="{Binding IsNotCalculated}"/>
 
                 <!--Height Progress Bar kısmı-->
 
@@ -78,7 +82,7 @@
 
 
                 <!--Width Progress Bar kısmı-->
-                <Label Text="WEIGHT" 
+                <Label Text="KİLO" 
                        TextColor="White"
                        HorizontalOptions="Center"
                        FontAttributes="Bold"
@@ -105,7 +109,8 @@
                         MaximumTrackColor="White"
                         Maximum="170"
                         Minimum="10"
-                        Value="83"/>
+                        Value="83"
+                         IsEnabled="{Binding IsNotCalculated}"/>
 
                 <!--Width Progress Bar kısmı-->
             </VerticalStackLayout>
@@ -137,25 +142,47 @@
             <!--Right Arrow kısmı Burası RightArrowButtonControl dan geliyor -->
             <controls:RightArrowButtonControl Grid.Row="1"
                                               IconImgeSource="right_arrow"
-                                              ButtonPressed="CalculateData_Pressed"/>
+                                              ButtonPressed="CalculateData_Pressed"
+                                              IsVisible="{Binding IsNotCalculated}"
+                                              />
+
+
+            <!--Refresh Arrow kısmı-->
+            <controls:RightArrowButtonControl Grid.Row="1"
+                                  IconImgeSource="refresh"
+                                  ButtonPressed="RefreshHaylou_Pressed"
+                                  IsVisible="{Binding IsCalculated}"
+                                  />
+
             <!--Right Arrow kısmı-->
         </Grid>
         <!--Alttaki Beyaz kısmı kısmı-->
 
         <!--Right Arrow kısmı-->
-
         <VerticalStackLayout Grid.Row="2"
                              Padding="25"
-                             Spacing="20">
-            <Label Text="Yazılımcı olarak benim için en önemli şeylerden biri, teknolojideki sürekli gelişim ve yenilikleri yakından takip etmek ve bu alanda kendimi sürekli olarak geliştirmektir." />
-            <Label Text=" * Teknolojideki sürekli gelişim ve yenilikleri yakından takip etmek ve bu alanda kendimi sürekli olarak geliştirmektir."
+                             Spacing="20"
+                             IsVisible="{Binding IsNotCalculated}">
+            <Label Text="Sağlıklı bir yaşam için kilo kontrolü önemlidir çünkü doğru vücut ağırlığında kalmak, fiziksel ve zihinsel sağlığı korumanın temel bir parçasıdır." />
+            <Label Text=" * Kilo kontrolü, kalp sağlığını korur, enerji seviyelerini artırır ve yaşam kalitesini iyileştirir."
                    FontSize="12"
                    FontAttributes="Italic"
                    />
         </VerticalStackLayout>
 
-
-
+        <VerticalStackLayout Grid.Row="2"
+                             Padding="25"
+                             Spacing="20"
+                             IsVisible="{Binding IsCalculated}">
+            <Label Text="sağlıklı Yaşam" />
+            <Label Text="{Binding Bmi}"
+                   FontSize="50"
+                   FontAttributes="Bold"
+                   TextColor="#7755EC"
+                   />
+            <Label Text="{Binding BmiStatus}" TextColor="{Binding StatusColor}"
+                   FontSize="18"/>
+        </VerticalStackLayout>
     </Grid>
 
 </ContentPage>
