@@ -23,15 +23,32 @@ namespace Haylou
         }
         private static (string status, Color color) GetHaylouStatus(double bmi)
         {
-            if (bmi < 18.2)
-                return ("Kilo kontrolünde zorluklar yaşayabilirsiniz, daha fazla beslenmeye özen gösterin.", Colors.Blue);
-            else if (bmi <= 24.9)
-                return ("Kilo kontrolünde başarılısınız, Harikasınız!", Colors.Green);
-            else if (bmi <= 29.9)
-                return ("Kilo kontrolünde zorlanıyorsunuz, dengeli bir beslenme planı yapmayı düşünebilirsiniz.", Colors.DeepSkyBlue);
+            if (bmi < 15)
+                return ("Aşırı derecede zayıfsınız. Lütfen bir doktora danışın.", Colors.Red);
+            else if (bmi >= 15 && bmi < 16)
+                return ("Aşırı zayıfsınız. Beslenmenize dikkat edin.", Colors.Orange);
+            else if (bmi >= 16 && bmi < 17)
+                return ("Zayıfsınız. Daha fazla beslenmeye özen gösterin.", Colors.DarkTurquoise);
+            else if (bmi >= 17 && bmi < 18.5)
+                return ("Hafif zayıfsınız. Sağlıklı bir beslenme programı uygulayın.", Colors.LightGreen);
+            else if (bmi >= 18.5 && bmi < 20)
+                return ("Normalin alt sınırındasınız. Dengeli bir yaşam tarzı sürdürün.", Colors.Green);
+            else if (bmi >= 20 && bmi < 22.5)
+                return ("Normalin alt sınırı ile normal arasındasınız. Sağlıklı beslenmeye devam edin.", Colors.LightGreen);
+            else if (bmi >= 22.5 && bmi < 24.9)
+                return ("Normalin üst sınırındasınız. Sağlıklı bir yaşam tarzı sürdürün.", Colors.Green);
+            else if (bmi >= 25 && bmi < 27.5)
+                return ("Hafif fazla kilolusunuz. Daha fazla egzersiz yapabilirsiniz.", Colors.DarkOrchid);
+            else if (bmi >= 27.5 && bmi < 29.9)
+                return ("Orta derecede fazla kilolusunuz. Sağlıklı beslenme alışkanlıkları edinin.", Colors.Orange);
+            else if (bmi >= 30 && bmi < 32.5)
+                return ("Obezite sınıfı I'desiniz. Sağlıklı yaşam için bir plan yapın.", Colors.Red);
+            else if (bmi >= 32.5 && bmi < 35)
+                return ("Obezite sınıfı II'desiniz. Bir doktora danışmanız önemlidir.", Colors.DarkRed);
             else
-                return ("Kilo kontrolünde ciddi problemler yaşıyor olabilirsiniz, doktorunuza danışmanız önemlidir.", Colors.DarkRed);
+                return ("Obezite sınıfı III'tesiniz. Acilen bir sağlık uzmanına başvurun.", Colors.DarkRed);
         }
+
 
         private void RefreshHaylou_Pressed(object sender, EventArgs e)
         {
